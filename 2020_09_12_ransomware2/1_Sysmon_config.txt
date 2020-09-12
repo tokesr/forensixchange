@@ -5,55 +5,46 @@
 <EventFiltering>
 	<RuleGroup name="" groupRelation="or">
 		<ProcessCreate onmatch="include">
-			<!--include with no rules means everything is excluded, nothing will be logged->
 		</ProcessCreate>
 	</RuleGroup>
 	
 	<RuleGroup name="" groupRelation="or">
 		<FileCreateTime onmatch="include">
-			<!--include with no rules means everything is excluded, nothing will be logged->
 		</FileCreateTime>
 	</RuleGroup>
 
 	<RuleGroup name="" groupRelation="or">
 		<NetworkConnect onmatch="include">
-			<!--include with no rules means everything is excluded, nothing will be logged->
 		</NetworkConnect>
 	</RuleGroup>
 
 	<RuleGroup name="" groupRelation="or">
 		<ProcessTerminate onmatch="include">
-			<!--include with no rules means everything is excluded, nothing will be logged->
 		</ProcessTerminate>
 	</RuleGroup>
 
 	<RuleGroup name="" groupRelation="or">
 		<DriverLoad onmatch="include">
-			<!--include with no rules means everything is excluded, nothing will be logged->
 		</DriverLoad>
 	</RuleGroup>
 
 	<RuleGroup name="" groupRelation="or">
 		<ImageLoad onmatch="include">
-			<!--include with no rules means everything is excluded, nothing will be logged->
 		</ImageLoad>
 	</RuleGroup>
 
 	<RuleGroup name="" groupRelation="or">
 		<CreateRemoteThread onmatch="include">
-			<!--include with no rules means everything is excluded, nothing will be logged->
 		</CreateRemoteThread>
 	</RuleGroup>
 
 	<RuleGroup name="" groupRelation="or">
 		<RawAccessRead onmatch="include">
-			<!--include with no rules means everything is excluded, nothing will be logged->
 		</RawAccessRead>
 	</RuleGroup>
 
 	<RuleGroup name="" groupRelation="or">
 		<ProcessAccess onmatch="include">
-			<!--include with no rules means everything is excluded, nothing will be logged->
 		</ProcessAccess>
 	</RuleGroup>
 
@@ -64,32 +55,27 @@
 
 	<RuleGroup name="" groupRelation="or">
 		<RegistryEvent onmatch="include">
-			<!--include with no rules means everything is excluded, nothing will be logged->
 		</RegistryEvent>
 	</RuleGroup>
 
 
 	<RuleGroup name="" groupRelation="or">
 		<FileCreateStreamHash onmatch="include">
-			<!--include with no rules means everything is excluded, nothing will be logged->
 		</FileCreateStreamHash>
 	</RuleGroup>
 
 	<RuleGroup name="" groupRelation="or">
 		<PipeEvent onmatch="include">
-			<!--include with no rules means everything is excluded, nothing will be logged->
 		</PipeEvent>
 	</RuleGroup>
 
 	<RuleGroup name="" groupRelation="or">
-		<WmiEvent onmatch="include>
-			<!--include with no rules means everything is excluded, nothing will be logged->
+		<WmiEvent onmatch="include">
 		</WmiEvent>
 	</RuleGroup>
 
 	<RuleGroup name="" groupRelation="or">
 		<DnsQuery onmatch="include">
-			<!--include with no rules means everything is excluded, nothing will be logged->
 		</DnsQuery>
 	</RuleGroup>
 
