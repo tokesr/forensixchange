@@ -1,20 +1,91 @@
 <Sysmon schemaversion="4.32"> 
     <HashAlgorithms>md5,sha256,IMPHASH</HashAlgorithms> 
     <ArchiveDirectory>$ARCHIVEDIR$</ArchiveDirectory>  
-    <EventFiltering> 
-            <RuleGroup name="EveryFileCreation" groupRelation="or"> 
-                <FileCreate onmatch="exclude"> 
-                </FileCreate> 
-            </RuleGroup> 
-            <RuleGroup name="EveryFileDeletion" groupRelation="or"> 
-                <FileDelete onmatch="exclude"> 
-                </FileDelete> 
-           </RuleGroup>
+
+<EventFiltering>
+	<RuleGroup name="" groupRelation="or">
+		<ProcessCreate onmatch="include">
+		</ProcessCreate>
+	</RuleGroup>
+	
+	<RuleGroup name="" groupRelation="or">
+		<FileCreateTime onmatch="include">
+		</FileCreateTime>
+	</RuleGroup>
+
+	<RuleGroup name="" groupRelation="or">
+		<NetworkConnect onmatch="include">
+		</NetworkConnect>
+	</RuleGroup>
+
+	<RuleGroup name="" groupRelation="or">
+		<ProcessTerminate onmatch="include">
+		</ProcessTerminate>
+	</RuleGroup>
+
+	<RuleGroup name="" groupRelation="or">
+		<DriverLoad onmatch="include">
+		</DriverLoad>
+	</RuleGroup>
+
+	<RuleGroup name="" groupRelation="or">
+		<ImageLoad onmatch="include">
+		</ImageLoad>
+	</RuleGroup>
+
+	<RuleGroup name="" groupRelation="or">
+		<CreateRemoteThread onmatch="include">
+		</CreateRemoteThread>
+	</RuleGroup>
+
+	<RuleGroup name="" groupRelation="or">
+		<RawAccessRead onmatch="include">
+			<!--NOTE: Using "include" with no rules means nothing in this section will be logged-->
+		</RawAccessRead>
+	</RuleGroup>
+
+	<RuleGroup name="" groupRelation="or">
+		<ProcessAccess onmatch="include">
+			<!--NOTE: Using "include" with no rules means nothing in this section will be logged-->
+		</ProcessAccess>
+	</RuleGroup>
+
+        <RuleGroup name="EveryFileCreation" groupRelation="or"> 
+		<FileCreate onmatch="exclude"> 
+		</FileCreate> 
+        </RuleGroup> 
+
+	<RuleGroup name="" groupRelation="or">
+		<RegistryEvent onmatch="include">
+		</RegistryEvent>
+	</RuleGroup>
 
 
-            <RuleGroup name="" groupRelation="or"> 
-                <ProcessCreate onmatch="include">
-                </ProcessCreate> 
-           </RuleGroup>  
-    </EventFiltering> 
-</Sysmon> 
+	<RuleGroup name="" groupRelation="or">
+		<FileCreateStreamHash onmatch="include">
+		</FileCreateStreamHash>
+	</RuleGroup>
+
+	<RuleGroup name="" groupRelation="or">
+		<PipeEvent onmatch="include">
+			<!--NOTE: Using incide with no rules means nothing in this section will be logged-->
+		</PipeEvent>
+	</RuleGroup>
+
+	<RuleGroup name="" groupRelation="or">
+		<WmiEvent onmatch="include>
+		</WmiEvent>
+	</RuleGroup>
+
+	<RuleGroup name="" groupRelation="or">
+		<DnsQuery onmatch="include">
+		</DnsQuery>
+	</RuleGroup>
+
+        <RuleGroup name="EveryFileDeletion" groupRelation="or"> 
+		<FileDelete onmatch="exclude"> 
+		</FileDelete> 
+	</RuleGroup>
+
+</EventFiltering>
+</Sysmon>
