@@ -1,0 +1,6 @@
+$jobname = "SafeHaven_cleaning"  
+$taskpath = "\Automation"  
+$action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument 'cd C:\$ARCHIVEDIR$; Get-ChildItem  -Force -File | ForEach-Object { Where-Object {$_.LastAccessTime -lt (Get-Date).AddMinutes(-15)}| remove-item $_ -Force -ErrorAction SilentlyContinue; remove-item $_  -Confirm:$false -ErrorAction SilentlyContinue;}' 
+$trigger = New-ScheduledTaskTrigger -Once -At (Get-Date).Date -RepetitionInterval (New-TimeSpan -Minutes 15)   
+$settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries –StartWhenAvailable -DontStopOnIdleEnd   
+Register-ScheduledTask -TaskPath $taskpath -TaskName $jobname -Action $action -Trigger $trigger -RunLevel Highest -User "$COMPUTERNAME$\$USERNAME$" $settings 

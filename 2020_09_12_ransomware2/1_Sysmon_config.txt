@@ -1,0 +1,20 @@
+<Sysmon schemaversion="4.32"> 
+    <HashAlgorithms>md5,sha256,IMPHASH</HashAlgorithms> 
+    <ArchiveDirectory>$ARCHIVEDIR$</ArchiveDirectory>  
+    <EventFiltering> 
+            <RuleGroup name="EveryFileCreation" groupRelation="or"> 
+                <FileCreate onmatch="exclude"> 
+                </FileCreate> 
+            </RuleGroup> 
+            <RuleGroup name="EveryFileDeletion" groupRelation="or"> 
+                <FileDelete onmatch="exclude"> 
+                </FileDelete> 
+           </RuleGroup>
+
+
+            <RuleGroup name="" groupRelation="or"> 
+                <ProcessCreate onmatch="include">
+                </ProcessCreate> 
+           </RuleGroup>  
+    </EventFiltering> 
+</Sysmon> 

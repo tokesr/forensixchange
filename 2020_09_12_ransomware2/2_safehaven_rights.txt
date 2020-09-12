@@ -1,0 +1,9 @@
+$path = "C:\$ARCHIVEDIR$" 
+
+$Acl = Get-Acl $path
+$Ar = New-Object System.Security.AccessControl.FileSystemAccessRule("$COMPUTERNAME$\$USERNAME$", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+$Acl.SetAccessRule($Ar)
+$Acl.SetAccessRuleProtection($False,$True)
+Set-Acl "C:\SafeHaven" $Acl
+
+

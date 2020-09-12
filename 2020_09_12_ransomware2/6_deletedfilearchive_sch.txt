@@ -1,0 +1,35 @@
+$class = cimclass MSFT_TaskEventTrigger root/Microsoft/Windows/TaskScheduler  
+$trigger = $class | New-CimInstance –ClientOnly  
+$trigger.Enabled = $true   
+$trigger.Subscription = ' 
+<QueryList> 
+  <Query Id="0" Path="Microsoft-Windows-Sysmon/Operational"> 
+    <Select Path="Microsoft-Windows-Sysmon/Operational">*[System[(EventID=23) and TimeCreated[timediff(@SystemTime) &lt;= 300000]]]</Select> 
+  </Query> 
+</QueryList> '  
+
+ 
+$ActionParameters = @{   
+Execute = 'powershell.exe'   
+Argument = 'cd C:\$ARCHIVEDIR$;GCI -Force | ForEach-Object {scp -P 22 -i $SSHKEY$ -o StrictHostKeyChecking=no  $_ $BACKUPPATH$;remove-item $_ -Force -ErrorAction SilentlyContinue; remove-item $_  -Confirm:$false -ErrorAction SilentlyContinue;}' 
+}
+
+
+$Action = New-ScheduledTaskAction @ActionParameters   
+$Principal = New-ScheduledTaskPrincipal -UserId 'WinForTest\WinForTest' -LogonType ServiceAccount   
+$Settings = New-ScheduledTaskSettingsSet   
+
+$RegSchTaskParameters = @{ 
+TaskName = 'DeletedFileArchive' 
+Description = 'Uploads the files to a server after they are deleted and archived'
+TaskPath = '\Automation\' 
+Action = $Action 
+Principal = $Principal 
+Settings = $Settings 
+Trigger = $Trigger } 
+Register-ScheduledTask @RegSchTaskParameters 
+
+Disable-ScheduledTask -TaskPath "Automation" -TaskName "DeletedFileArchive"
+
+
+
