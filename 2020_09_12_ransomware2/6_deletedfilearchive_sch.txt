@@ -16,7 +16,7 @@ Argument = 'cd C:\$ARCHIVEDIR$;GCI -Force | ForEach-Object {scp -P 22 -i $SSHKEY
 
 
 $Action = New-ScheduledTaskAction @ActionParameters   
-$Principal = New-ScheduledTaskPrincipal -UserId 'WinForTest\WinForTest' -LogonType ServiceAccount   
+$Principal = New-ScheduledTaskPrincipal -UserId '$COMPUTERNAME$\$USERNAME$' -LogonType ServiceAccount   
 $Settings = New-ScheduledTaskSettingsSet   
 
 $RegSchTaskParameters = @{ 
