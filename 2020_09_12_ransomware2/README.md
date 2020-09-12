@@ -20,7 +20,7 @@ So here the way to replace $ARCHHIVEDIR$ to SafeHaven in each file in the folder
 
 sed -i 's/\$ARCHIVEDIR\$/SafeHaven/g' ./*
 
-You have to escpace the command characters, be aware of this.
+You have to escape the command characters, be aware of this.
 
 
 sed -i 's/\$COMPUTERNAME\$/WinForTest3/g' ./*
